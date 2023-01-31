@@ -1,4 +1,4 @@
-FROM openjdk:8
+FROM maven:3.6.3-jdk-8
 
 # Set the working directory to /app
 WORKDIR /app
@@ -6,9 +6,6 @@ WORKDIR /app
 # Copy the JAR file to the image
 COPY . .
 
-RUN apt update
-RUN apt install maven -y
-RUN mvn install -Dmaven.test.skip=true
 RUN mv target/*.jar app.jar
 
 # Copy the JAR file to the image
